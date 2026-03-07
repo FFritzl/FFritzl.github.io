@@ -1,0 +1,55 @@
+name: Save registration
+
+on:
+  workflow_dispatch:
+    inputs:
+      payload:
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  save:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Save registration file
+        env:
+          PAYLOAD: ${{ inputs.payload }}
+        run: |
+          python <<'PY'
+          import json, os, re
+          from datetime import datetime
+          from pathlib import Path
+
+          payload = json.loads(os.environ["PAYLOAD"])
+
+          name = payload.get("nafn", "unknown")
+          safe = re.sub(r"[^a-zA-Z0-9]", "-", name.lower())
+
+          timestamp = datetime.utcnow().strftime("%Y-%m-%d-%H%M%S")
+
+          filename = f"{timestamp}-{safe}.json"
+
+          path = Path("skraningar") / filename
+          path.parent.mkdir(parents=True, exist_ok=True)
+
+          path.write_text(
+              json.dumps(payload, ensure_ascii=False, indent=2),
+              encoding="utf-8"
+          )
+
+          print("Saved:", path)
+          PY
+
+      - name: Commit file
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add skraningar
+          git commit -m "New registration"
+          git push

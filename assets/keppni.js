@@ -1,58 +1,39 @@
-let loginform = document.getElementById("skraningarform");
+const form = document.getElementById("skraningarform");
 
-loginform.addEventListener("submit", (e) => {
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  let nafn = document.getElementById("nafn");
-  let mail = document.getElementById("mail");
-  let aldur = document.getElementById("aldur");
-  let lid = document.getElementById("team");
-  let kyn = document.getElementById("kyn");
-  let upplysingar = document.getElementById("upplysingar");
+  const formData = new FormData(form);
 
-  const valdir = Array.from(
-    document.querySelectorAll('input[name="flokkur"]:checked'),
-    (cb) => cb.value,
-  );
+  const data = Object.fromEntries(formData.entries());
 
-  if (
-    nafn.value === "" ||
-    mail.value === "" ||
-    aldur.value === "" ||
-    lid.value === "" ||
-    valdir.length === 0 ||
-    kyn.value === "" ||
-    upplysingar.value === ""
-  ) {
-    alert("Það þarf að fylla í alla reiti til að senda inn skráningu");
-    return;
+  // collect checkboxes
+  data.flokkur = formData.getAll("flokkur");
+
+  data.sentAt = new Date().toISOString();
+
+  console.log(data);
+
+  try {
+    const res = await fetch(
+      "https://fragrant-leaf-ac8a.frikkipal.workers.dev",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      },
+    );
+
+    const result = await res.json();
+
+    if (!res.ok) throw new Error(result.error);
+
+    alert("Þú hefur skráð þig!");
+    form.reset();
+  } catch (err) {
+    console.error(err);
+    alert("Villa kom upp við sendingu.");
   }
-
-  const title = `Ný skráning: ${nafn.value}`;
-
-  const body = `
-## Ný keppnisskráning
-
-**Nafn:** ${nafn.value}  
-**Mail:** ${mail.value}  
-**Aldur:** ${aldur.value}  
-**Lið:** ${lid.value}  
-**Flokkur:** ${valdir.join(", ")}  
-**Kyn:** ${kyn.value}  
-
-**Upplýsingar:**  
-${upplysingar.value}
-`;
-
-  const url =
-    "https://github.com/FFritzl/FFritzl.github.io/issues/new?title=" +
-    encodeURIComponent(title) +
-    "&body=" +
-    encodeURIComponent(body);
-
-  window.open(url, "_blank");
-
-  alert("Þú hefur skráð þig í keppni!");
-
-  loginform.reset();
 });

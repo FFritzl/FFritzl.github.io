@@ -32,29 +32,30 @@
       </p>
       <h2>nauðsynlegt er að hafa bílpróf og tryggingaviðauka</h2>
       <br />
-      <form action="" id="skraningarform">
+      <form id="skraningarform">
         <label for="nafn"
           >Nafn
-          <input type="text" name="" id="nafn" />
+          <input type="text" name="nafn" id="nafn" required />
         </label>
         <br />
         <br />
-        <label for="mail">Email <input type="email" name="" id="mail" /></label>
+        <label for="mail">Email</label>
+        <input type="email" name="mail" id="mail" required />
         <br />
         <br />
         <label for="aldur">Aldur</label>
-        <input type="number" name="" id="aldur" />
+        <input type="number" name="aldur" id="aldur" required />
         <br />
         <br />
         <label for="team">Veldu klúbb sem keppt er fyrir hönd :</label>
         <br />
         <br />
-        <label for="team">AÍH</label>
-        <input type="radio" name="team" id="team" value="AÍH" />
-        <label for="team">KK</label>
-        <input type="radio" name="team" id="team" value="KK" />
-        <label for="team">KKA</label>
-        <input type="radio" name="team" id="team" value="KKA" />
+        <label for="team-aih">AÍH</label>
+        <input type="radio" name="team" id="team-aih" value="AÍH" required />
+        <label for="team-kk">KK</label>
+        <input type="radio" name="team" id="team-kk" value="KK" />
+        <label for="team-kka">KKA</label>
+        <input type="radio" name="team" id="team-kka" value="KKA" />
         <br />
         <br />
 
@@ -65,28 +66,28 @@
         <input
           type="checkbox"
           name="flokkur"
-          id="flokkur"
+          id="flokkur-minni"
           value="Minni Götubílar(300>)"
         />
         <label for="flokkur">Götubílar(300hp+)</label>
         <input
           type="checkbox"
           name="flokkur"
-          id="flokkur"
+          id="flokkur-gotu"
           value="Götubílar(300hp+)"
         />
         <label for="flokkur">Opinn Flokkur</label>
         <input
           type="checkbox"
           name="flokkur"
-          id="flokkur"
+          id="flokkur-opinn"
           value="Opinn Flokkur"
         />
         <br />
         <br />
         <label for="kyn">Kyn</label>
         <br />
-        <select name="kyn" id="kyn">
+        <select name="kyn" id="kyn" required>
           <option value="karl">Karl</option>
           <option value="kona">Kona</option>
           <option value="annað">Annað</option>
@@ -95,7 +96,7 @@
         <br />
         <label for="upplysingar">Upplýsingar um þig og bílinn</label>
         <br />
-        <textarea name="" id="upplysingar"></textarea>
+        <textarea name="upplysingar" id="upplysingar"></textarea>
         <br />
         <br />
         <button type="submit">Senda Skráningu</button>
@@ -105,6 +106,10 @@
     <script src="assets/keppni.js"></script>
 
     <!--Footer-->
-    <footer class="footer"></footer>
+    <footer class="footer">
+      <p>Author: Friðrik</p>
+      <p><a href="mailto:frikkipal@gmail.com">frikkipal@gmail.com.com</a></p>
+      <p>&copy; 2026 Fritzy</p>
+    </footer>
   </body>
 </html>
