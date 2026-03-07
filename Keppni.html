@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skráning í driftkeppni</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+    <link rel="stylesheet" href="assets/navbar.css" />
+    <link rel="stylesheet" href="assets/keppni.css" />
+  </head>
+  <body>
+    <!--Header-->
+    <header class="header">
+      <nav class="navbar">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="Index.html">Home</a></li>
+          <li class="nav-item"><a href="#">Skrá í keppni</a></li>
+          <li class="nav-item"><a href="Fréttir.html">Fréttir</a></li>
+          <li class="nav-item"><a href="Ummig.html">Um mig</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!--Main-->
+    <main class="main">
+      <h1>Velkominn</h1>
+      <p>
+        Þetta er skráning í næstu driftkeppni sem verður haldin 22.júní þér er
+        velkomið að skrá þig ef þú hefur náð settum aldri til að geta keppt í
+        þessari grein.
+        <br />
+      </p>
+      <h2>nauðsynlegt er að hafa bílpróf og tryggingaviðauka</h2>
+      <br />
+      <form action="" id="skraningarform">
+        <label for="nafn"
+          >Nafn
+          <input type="text" name="" id="nafn" />
+        </label>
+        <br />
+        <br />
+        <label for="mail">Email <input type="email" name="" id="mail" /></label>
+        <br />
+        <br />
+        <label for="aldur">Aldur</label>
+        <input type="number" name="" id="aldur" />
+        <br />
+        <br />
+        <label for="team">Veldu klúbb sem keppt er fyrir hönd :</label>
+        <br />
+        <br />
+        <label for="team">AÍH</label>
+        <input type="radio" name="team" id="team" value="AÍH" />
+        <label for="team">KK</label>
+        <input type="radio" name="team" id="team" value="KK" />
+        <label for="team">KKA</label>
+        <input type="radio" name="team" id="team" value="KKA" />
+        <br />
+        <br />
+
+        <label for="flokkur">Veldu flokk:</label>
+        <br />
+        <br />
+        <label for="flokkur">Minni Götubílar(300>)</label>
+        <input
+          type="checkbox"
+          name="flokkur"
+          id="flokkur"
+          value="Minni Götubílar(300>)"
+        />
+        <label for="flokkur">Götubílar(300hp+)</label>
+        <input
+          type="checkbox"
+          name="flokkur"
+          id="flokkur"
+          value="Götubílar(300hp+)"
+        />
+        <label for="flokkur">Opinn Flokkur</label>
+        <input
+          type="checkbox"
+          name="flokkur"
+          id="flokkur"
+          value="Opinn Flokkur"
+        />
+        <br />
+        <br />
+        <label for="kyn">Kyn</label>
+        <br />
+        <select name="kyn" id="kyn">
+          <option value="karl">Karl</option>
+          <option value="kona">Kona</option>
+          <option value="annað">Annað</option>
+        </select>
+        <br />
+        <br />
+        <label for="upplysingar">Upplýsingar um þig og bílinn</label>
+        <br />
+        <textarea name="" id="upplysingar"></textarea>
+        <br />
+        <br />
+        <button type="submit">Senda Skráningu</button>
+        <button type="reset">Eyða</button>
+      </form>
+    </main>
+    <script src="assets/keppni.js"></script>
+
+    <!--Footer-->
+    <footer class="footer"></footer>
+  </body>
+</html>
