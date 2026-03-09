@@ -27,6 +27,7 @@ async function LoadSkraningar() {
         <br />
         <p>Upplýsingar: ${data.upplysingar}</p>
       </div>
+      <br />
       `;
 
       container.appendChild(card);
