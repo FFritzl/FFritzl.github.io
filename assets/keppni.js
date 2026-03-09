@@ -1,39 +1,55 @@
-const form = document.getElementById("skraningarform");
+document
+  .getElementById("skraningarform")
+  .addEventListener("submit", async function (e) {
+    e.preventDefault();
 
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
+    const nafn = document.getElementById("nafn").value.trim();
+    const mail = document.getElementById("mail").value.trim();
+    const aldur = document.getElementById("aldur").value;
+    const kyn = document.getElementById("kyn").value;
+    const upplysingar = document.getElementById("upplysingar").value.trim();
 
-  const formData = new FormData(form);
+    const teamElement = document.querySelector('input[name="team"]:checked');
+    const team = teamElement ? teamElement.value : "";
 
-  const data = Object.fromEntries(formData.entries());
+    const flokkar = Array.from(
+      document.querySelectorAll('input[name="flokkur"]:checked'),
+    ).map((checkbox) => checkbox.value);
 
-  // collect checkboxes
-  data.flokkur = formData.getAll("flokkur");
+    const data = {
+      nafn,
+      mail,
+      aldur,
+      team,
+      flokkar,
+      kyn,
+      upplysingar,
+      sentAt: new Date().toISOString(),
+    };
 
-  data.sentAt = new Date().toISOString();
-
-  console.log(data);
-
-  try {
-    const res = await fetch(
-      "https://fragrant-leaf-ac8a.frikkipal.workers.dev",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+    try {
+      const response = await fetch(
+        "https://fragrant-leaf-ac8a.frikkipal.workers.dev",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
         },
-        body: JSON.stringify(data),
-      },
-    );
+      );
 
-    const result = await res.json();
+      const result = await response.text();
+      console.log(result);
 
-    if (!res.ok) throw new Error(result.error);
+      if (!response.ok) {
+        throw new Error("Villa við að senda skráningu");
+      }
 
-    alert("Þú hefur skráð þig!");
-    form.reset();
-  } catch (err) {
-    console.error(err);
-    alert("Villa kom upp við sendingu.");
-  }
-});
+      alert("Skráning send!");
+      document.getElementById("skraningarform").reset();
+    } catch (error) {
+      console.error(error);
+      alert("Ekki tókst að senda skráningu.");
+    }
+  });
