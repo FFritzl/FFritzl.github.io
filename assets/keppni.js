@@ -29,7 +29,7 @@ document
 
     try {
       const response = await fetch(
-        "https://fragrant-leaf-ac8a.frikkipal.workers.dev",
+        "https://fragrant-leaf-ac8a.frikkipal.workers.dev/",
         {
           method: "POST",
           headers: {
