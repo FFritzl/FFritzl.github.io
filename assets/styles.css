@@ -51,6 +51,10 @@ body {
   letter-spacing: 1px;
 }
 
+.main a {
+  color: blue;
+}
+
 th,
 td {
   border: 1px solid rgb(160 160 160);
