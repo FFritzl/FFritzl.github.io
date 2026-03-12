@@ -1,8 +1,11 @@
-document
-  .getElementById("skraningarform")
-  .addEventListener("submit", async function (e) {
+  const supabaseUrl = 'YOUR_SUPABASE_URL';
+  const supabaseKey = 'YOUR_SUPABASE_PUBLIC_KEY';
+  const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+document.getElementById("skraningarform").addEventListener("submit", async function (e) {
     e.preventDefault();
 
+    
     const nafn = document.getElementById("nafn").value.trim();
     const mail = document.getElementById("mail").value.trim();
     const aldur = document.getElementById("aldur").value;
