@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../assets/styles.css" />
     <link rel="stylesheet" href="../assets/navbar.css" />
     <link rel="stylesheet" href="login.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   </head>
   <body>
     <!--Header-->
@@ -28,11 +29,11 @@
     <main>
         <div class="login-box">
             <form id="loginform">
-            <label for="">User</label>
+            <label for="email">Email</label>
             <br />
-            <input type="text" id="username">
+            <input type="email" id="email">
             <br />
-            <label for="">Password</label>
+            <label for="password">Password</label>
             <br />
             <input type="text" id="password">
             <br/>
@@ -42,7 +43,7 @@
         </div>
     </main>
 
-    <script src="./login.js"></script>
+    <script type="module" src="./login.js"></script>
 
     <!--Footer-->
     <footer class="footer">

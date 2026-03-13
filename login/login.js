@@ -1,17 +1,32 @@
-    var tilraun = 4
+import { getSupabaseClient } from "../assets/global.js";
 
-document.getElementById("loginform").addEventListener("submit", async function (e) { 
-    e.preventDefault(); 
+const loginform = document.getElementById('loginform')
+const supabase = getSupabaseClient();
 
-    const user = document.getElementById("username").value.trim();
-    const password = document.getElementById("password").value.trim();
+loginform.addEventListener('submit', async(event) => {
+    event.preventDefault();
 
-    if (user == "frikki" && password == "1234") {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    const { data, error } = await supabase.auth.signInWithPassword ({
+        email: email,
+        password: password,
+    });
+
+    if (error) {
+        alert("Error" + error.message)
+    } else {
         window.location = "dash.html"
     }
-    else {
-        tilraun--;
-        alert("Þú hefur " + tilraun + " tilraunir")
-    }
+ 
+ });
 
-})
+async function checkSession() {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (user) {
+        window.location = "dash.html"
+    }
+}
+
+checkSession();
