@@ -14,7 +14,7 @@ body {
 }
 
 .main {
-  width: min(100%, 760px);
+  width: min(100%, 1300px);
   margin: 0 auto;
   background-color: rgba(15, 23, 42, 0.85);
   border: 1px solid rgba(148, 163, 184, 0.25);
@@ -44,6 +44,12 @@ body {
 
 .main a {
   color: blue;
+}
+
+.ummig h2, .ummig li {
+  text-align: center;
+  list-style-type: none
+
 }
 
 .logo-container {
