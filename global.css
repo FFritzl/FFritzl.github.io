@@ -1,0 +1,21 @@
+@import "assets/css/layout.css";
+@import "assets/css/styles.css";
+@import "assets/css/header.css";
+@import "assets/css/main.css";
+
+html,
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(160deg, #0f172a, #1e293b);
+  color: #e2e8f0;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+footer {
+  width: min(100%, 760px);
+  margin: 1rem auto;
+  text-align: center;
+  color: #94a3b8;
+}
